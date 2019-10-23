@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            const apiUtrl = 'http://www.meteoromania.ro/wp-json/meteoapi/v2/starea-vremii'
+            const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
+            window.onload = async () => {
+                let response = await fetch(corsAnywhere + apiUtrl)
+                let jsonContenxt = await response.json();
+
+                console.log(jsonContenxt)
+            }            
+        </script>
+    </head>
+</html>

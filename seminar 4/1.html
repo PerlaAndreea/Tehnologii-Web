@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .done{
+                text-decoration: line-through;
+            }
+        </style>
+
+        <script>
+            window.onload = () => {
+                let addButton = document.getElementById('addButton')
+                let content = document.getElementById('content')
+                let todos = document.getElementById('todos')
+
+                addButton.onclick = () => {
+                  //  todos.innerHTML += `
+                  //      <li>${content.value}</li>
+                 //   `
+
+                 let item = document.createElement('li')
+                 let text = document.createTextNode(content.value)
+                 item.appendChild(text)
+                 todos.appendChild(item)
+
+                 item.onclick = () => {
+                     item.classList.toggle('done')
+                 }
+                }
+            }            
+        </script>
+    </head>
+    <body>
+        <div>
+            <input type="text" id=content>
+            <input type="button" id="addButton" value="+">
+        </div>    
+        <div>
+            <ol id=todos></ol>
+        </div>
+    </body>
+</html>
