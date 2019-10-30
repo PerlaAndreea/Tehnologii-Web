@@ -1,0 +1,13 @@
+label{
+    background-color: orange;
+}
+
+form input[type="text"]:not(.excepted) {
+    color: blue;
+}
+
+input[type=button] {
+    background-color: black;
+    color: white;
+    border-radius: 10px 0px 0px 5px;
+}

@@ -1,0 +1,14 @@
+article section::selection {
+    background: black;
+    color: white;
+}
+
+article section::first-letter{
+    font-size: 2em;
+}
+
+article section{
+    border: 1px solid black;
+    border-radius: 5px;
+
+}

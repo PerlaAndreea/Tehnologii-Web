@@ -1,0 +1,11 @@
+table>tbody>tr:nth-child(even){
+    background: tomato
+        }
+
+table>tbody>tr:nth-child(odd) {
+    background: lightgreen
+}
+
+table>thead>tr{
+    font-style: italic
+}
