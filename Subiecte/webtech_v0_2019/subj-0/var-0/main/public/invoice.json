@@ -1,0 +1,16 @@
+{
+    "invoiceNumber" : 20,
+    "invoiceSeries" : "somestring",
+    "invoiceItems" : [
+        {
+            "productName" : "some product name1",
+            "quantity" : 1,
+            "productPrice" : 20
+        },
+        {
+            "productName" : "some product name2",
+            "quantity" : 2,
+            "productPrice" : 22
+        }
+    ] 
+}
