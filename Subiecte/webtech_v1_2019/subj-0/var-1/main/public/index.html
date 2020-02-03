@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="my-div"></div>
+</body>
+<script>
+    readFromJson = async () => {
+        let response = await fetch('article.json');
+        let data = await response.json();
+
+        return data;
+    }
+
+    putDataToDiv = async () => {
+        let myDiv = document.getElementById('my-div');
+        let data = await readFromJson();
+
+        myDiv.innerHTML = JSON.stringify(data);
+    }
+
+    window.onload = () => {
+        putDataToDiv();
+    }
+</script>
+</html>

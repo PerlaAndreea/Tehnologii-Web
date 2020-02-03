@@ -1,0 +1,19 @@
+{
+    "title" : "some title",
+    "abstract" : "some abstract",
+    "keywords" : [
+        "keyword1", "keyword2", "keyword3"
+    ],
+    "authors" : [
+        {
+            "fullName" : "some full name 1",
+            "institution" : "some institution 1",
+            "email" : "some-email@email.com"
+        },
+        {
+            "fullName" : "some full name 2",
+            "institution" : "some institution 2",
+            "email" : "some-email2@email.com"
+        }
+    ]
+}
