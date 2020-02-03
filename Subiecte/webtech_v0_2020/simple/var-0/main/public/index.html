@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple app</title>
+    <script>
+        fetchDataFromTheServer = async () => {
+            let response = await fetch('/cars');
+            let data = await response.json();
+
+            return data;
+        }
+
+        getFilteredCars = async () => {
+            let data = await fetchDataFromTheServer();
+            let filteredCars = data.filter(car => car.color === 'red');
+
+            return filteredCars;
+        }
+
+        loadRedCarsToTable = async () => {
+            //console.log('btn click---');
+            let redCars = await getFilteredCars();
+            //console.log(redCars);
+
+            const myTable = document.getElementById('main');
+            redCars.forEach(car => {
+                let tr = document.createElement('tr');
+
+                Object.keys(car).forEach(key => {
+                    let td = document.createElement('td');
+                    td.innerHTML = car[key]
+                    tr.appendChild(td);
+                });
+
+                myTable.appendChild(tr);
+            })
+        }
+
+    </script>
+</head>
+<body>
+    A simple app
+    <input type="button" id="load" value="load" onclick="loadRedCarsToTable()"/>
+    <table id=main></table>
+</body>
+</html>
