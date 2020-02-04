@@ -3,6 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A simple app</title>
+    <style>
+        #main tr td:nth-child(1) {
+            background-color: red;
+        }
+    </style>
     <script>
         window.onload = async () => {
             let btn = document.getElementById('del')
@@ -13,11 +18,21 @@
             } 
 
             let deleteCar = async (name) => {
-                while (tbl.children.length > 0) {
-                    console.log(tbl.rows.value)
-                    tbl.lastElementChild.remove();
-                }
+                // let children = tbl.childNodes;
 
+                // let filteredRows = [].filter.call(tbl.rows, row => row.cells[0].innerText === name);
+                // filteredRows.forEach(row => {
+                //     row.parentNode.removeChild(row);
+                // });
+                // console.log(tbl);
+                try {
+                    await fetch(`/cars/${name}`, {
+                        method : 'delete'
+                    });
+                    load();
+                } catch (err) {
+                    console.warn(err);
+                }
             }
 
             let tbl = document.getElementById('main')
