@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,34 +10,16 @@
 
             let tbl = document.getElementById('main')
 
-            let response = await fetch('/cars')
-            let data = await response.json()
-
-            let carColorsForFiltering = data.map(car => car.color);
-            console.log(carColorsForFiltering);
+            btn.onclick = async () => {
+                await load(filter.value);
+            }
 
             let load = async (filter) => {
-                try {
-                    console.log(filter)
-                    if (filter === '') {
-                        let rows = data.map((e) => `
-                        <tr>
-                            <td>
-                                ${e.name}
-                            </td>
-                            <td>
-                                ${e.color}
-                            </td>
-                        </tr>
-                    `)
-                        tbl.innerHTML = rows.join()
-                    }
-                    else {
-                        if (carColorsForFiltering.indexOf(filter) !== -1) {
-                            let filteredData = data.filter((element) => element.color === filter)
-                            console.log(filteredData)
+                try{
+                    let response = await fetch(`/cars?filter=${filter}`);
+                    let data = await response.json();
 
-                            let rows = filteredData.map((e) => `
+                    let rows = data.map((e) => `
                         <tr>
                             <td>
                                 ${e.name}
@@ -48,48 +29,20 @@
                             </td>
                         </tr>
                     `)
-                            tbl.innerHTML = rows.join()
-                        } else {
-                            let nothing = []
-                            let rows = nothing.map((e) => `
-                        <tr>
-                            <td>
-                                ${e.name}
-                            </td>
-                            <td>
-                                ${e.color}
-                            </td>
-                        </tr>
-                    `)
-                            tbl.innerHTML = rows.join()
-
-                        }
-                    }
+                    tbl.innerHTML = rows.join()
                 }
-                catch (err) {
+                catch(err){
                     console.warn(err)
                 }
             }
-
-            btn.onclick = function () {
-                while (tbl.children.length > 0) {
-                    tbl.lastElementChild.remove();
-                }
-
-                let filterValue = filter.value;
-                console.log('WHY DO LIKE THIS -- filter value: ' + filterValue);
-                load(filterValue);
-            }
+            load('')
         }
-
     </script>
 </head>
-
 <body>
     A simple app
     <input type="text" placeholder="filter" id="filter" />
-    <input type="button" value="reload" id="reload">
+    <input type="button" id="reload" value="reload" />
     <table id=main></table>
 </body>
-
 </html>
